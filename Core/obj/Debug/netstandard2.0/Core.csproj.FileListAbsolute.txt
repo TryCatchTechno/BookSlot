@@ -1,0 +1,9 @@
+E:\TryCatch\BookSlot\Core\bin\Debug\netstandard2.0\Core.deps.json
+E:\TryCatch\BookSlot\Core\bin\Debug\netstandard2.0\Core.dll
+E:\TryCatch\BookSlot\Core\bin\Debug\netstandard2.0\Core.pdb
+E:\TryCatch\BookSlot\Core\obj\Debug\netstandard2.0\Core.csprojAssemblyReference.cache
+E:\TryCatch\BookSlot\Core\obj\Debug\netstandard2.0\Core.csproj.CoreCompileInputs.cache
+E:\TryCatch\BookSlot\Core\obj\Debug\netstandard2.0\Core.AssemblyInfoInputs.cache
+E:\TryCatch\BookSlot\Core\obj\Debug\netstandard2.0\Core.AssemblyInfo.cs
+E:\TryCatch\BookSlot\Core\obj\Debug\netstandard2.0\Core.dll
+E:\TryCatch\BookSlot\Core\obj\Debug\netstandard2.0\Core.pdb
