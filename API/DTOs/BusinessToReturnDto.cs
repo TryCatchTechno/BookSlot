@@ -1,7 +1,8 @@
-namespace Core.Entities
+namespace API.DTOs
 {
-    public class Business : BaseEntity
-    {   
+    public class BusinessToReturnDto
+    {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -9,8 +10,6 @@ namespace Core.Entities
         public string PIN { get; set; }
         public string ContactPerson { get; set; }
         public string ContactNumber { get; set; }
-        public BusinessCategory BusinessCategory { get; set; }
-        public int BusinessCategoryId { get; set; }
-
+        public string BusinessCategory { get; set; }  
     }
 }
