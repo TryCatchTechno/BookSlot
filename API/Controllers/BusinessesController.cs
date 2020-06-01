@@ -7,12 +7,11 @@ using Core.Specifications;
 using API.DTOs;
 using System.Linq;
 using AutoMapper;
+using API.Helpers;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class BusinessesController : ControllerBase
+    public class BusinessesController : BaseApiController
     {
         private readonly IGenericRepository<Business> _businessRepo;
         private readonly IGenericRepository<BusinessCategory> _businessCategoryRepo;
@@ -27,14 +26,20 @@ namespace API.Controllers
         }
 
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<BusinessToReturnDto>>> GetBusinesses()
+    public async Task<ActionResult<Pagination<BusinessToReturnDto>>> GetBusinesses([FromQuery]BusinessSpecParams businessParams)
     {
-        var spec = new BusinessesWithCategoriesSpecification();
+        var spec = new BusinessesWithCategoriesSpecification(businessParams);
+
+        var countSpec = new BusinessWithFiltersForCountSpecification(businessParams);
+        
+        var totalItems = await _businessRepo.CountAsync(spec);
 
         var businesses = await _businessRepo.ListAsync(spec);
 
-        return Ok(_mapper
-            .Map<IReadOnlyList<Business>, IReadOnlyList<BusinessToReturnDto>>(businesses));
+        var data = _mapper
+                .Map<IReadOnlyList<Business>, IReadOnlyList<BusinessToReturnDto>>(businesses);
+
+        return Ok(new Pagination<BusinessToReturnDto>(businessParams.PageIndex, businessParams.PageSize, totalItems, data));
     }
 
     [HttpGet("{id}")]
